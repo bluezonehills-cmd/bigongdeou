@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bigongdeou Travels | Intelligent Booking Tunnel — Quantum Digital Wire</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --sky:#0284c7;--sky2:#0369a1;--gold:#f59e0b;--gold2:#fbbf24;
+    --dark:#0f172a;--dark2:#1e293b;--slate:#64748b;--light:#f1f5f9;
+    --green:#25D366;--greenD:#075E54;--greenL:#DCF8C6;
+    --card:#fff;--line:#e2e8f0;--txt:#0f172a;--muted:#64748b;
+    --red:#dc2626;--wa:#ECE5DD;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+       background:var(--light);color:var(--txt);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 22px}
+  h1,h2,h3,h4{line-height:1.2;font-weight:800;letter-spacing:-.02em}
+  button{font-family:inherit}
+
+  /* ============ HEADER ============ */
+  header{background:linear-gradient(90deg,#0f172a,#1e293b);color:#fff;
+         position:sticky;top:0;z-index:80;border-bottom:3px solid var(--sky);
+         overflow:hidden;height:64px}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px;position:relative;z-index:2}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand .plane{font-size:22px;display:inline-block;animation:floatPlane 3s ease-in-out infinite}
+  @keyframes floatPlane{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+  .brand b{color:#fff;font-size:15.5px;font-weight:800;display:block;letter-spacing:-.01em}
+  .brand span{color:#94a3b8;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+  .nav-right{display:flex;align-items:center;gap:14px}
+  .qdw-badge{font-size:10.5px;background:rgba(2,132,199,.2);color:#38bdf8;
+             padding:5px 12px;border-radius:99px;font-weight:700;border:1px solid rgba(2,132,199,.4);
+             letter-spacing:.06em;text-transform:uppercase}
+  .lang-toggle{display:flex;background:rgba(255,255,255,.08);border-radius:99px;padding:3px;
+               border:1px solid rgba(255,255,255,.14)}
+  .lang-toggle button{background:transparent;border:none;color:#94a3b8;
+                      padding:6px 14px;border-radius:99px;font-size:12px;font-weight:700;
+                      cursor:pointer;transition:.2s;letter-spacing:.04em}
+  .lang-toggle button.active{background:var(--sky);color:#fff}
+  .lang-toggle button:hover:not(.active){color:#fff}
+
+  .fly-plane{position:absolute;top:50%;transform:translateY(-50%);
+             font-size:18px;opacity:.18;animation:flyAcross 14s linear infinite;pointer-events:none}
+  @keyframes flyAcross{0%{left:-40px}100%{left:105%}}
+
+  /* ============ HERO ============ */
+  .hero{background:linear-gradient(165deg,#0f172a 0%,#1e293b 60%,#334155 100%);
+        color:#fff;padding:56px 0 64px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);
+    background-size:28px 28px;opacity:.5;pointer-events:none}
+  .hero .wrap{position:relative;z-index:2}
+  .hero-badge{display:inline-flex;align-items:center;gap:9px;
+    background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.4);
+    color:var(--gold2);padding:6px 15px;border-radius:99px;
+    font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:22px}
+  .hero-badge i{width:7px;height:7px;border-radius:50%;background:var(--green);
+    box-shadow:0 0 0 4px rgba(37,211,102,.2);animation:pulse 2s infinite;display:inline-block}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .hero h1{font-size:clamp(28px,4.5vw,46px);max-width:840px;margin-bottom:16px}
+  .hero h1 em{font-style:normal;color:var(--gold)}
+  .hero p.lead{font-size:clamp(14.5px,1.7vw,17px);color:#cbd5e1;max-width:680px;margin-bottom:28px}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+  .btn{display:inline-flex;align-items:center;gap:9px;justify-content:center;
+       padding:13px 24px;border-radius:11px;font-weight:800;font-size:14px;
+       border:none;cursor:pointer;transition:.2s;text-decoration:none;position:relative}
+  .btn-gold{background:var(--gold);color:#0f172a;box-shadow:0 12px 30px rgba(245,158,11,.3)}
+  .btn-gold:hover{background:var(--gold2);transform:translateY(-2px)}
+  .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.18)}
+  .btn-ghost:hover{background:rgba(255,255,255,.15)}
+  .btn-sky{background:var(--sky);color:#fff}
+  .btn-sky:hover{background:var(--sky2);transform:translateY(-2px)}
+  .btn-green{background:var(--green);color:#fff}
+  .btn-green:hover{background:#1fbe5b;transform:translateY(-2px)}
+  .btn:disabled{opacity:.7;cursor:not-allowed;transform:none!important}
+  .hero-stats{display:flex;gap:44px;flex-wrap:wrap;padding-top:26px;border-top:1px solid rgba(255,255,255,.1)}
+  .hstat b{display:block;font-size:24px;font-weight:900;color:#fff}
+  .hstat span{font-size:11.5px;color:#94a3b8;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+
+  /* ============ SECTIONS ============ */
+  section{padding:60px 0}
+  .sec-head{max-width:680px;margin-bottom:36px}
+  .eyebrow{color:var(--sky);font-size:12px;font-weight:800;letter-spacing:.15em;
+           text-transform:uppercase;margin-bottom:10px;display:block}
+  .sec-head h2{font-size:clamp(23px,3.3vw,34px);margin-bottom:12px}
+  .sec-head p{color:var(--muted);font-size:15.5px}
+
+  /* ============ DEMO GRID ============ */
+  #demo{background:#fff}
+  .demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+  @media(max-width:1000px){.demo-grid{grid-template-columns:1fr}}
+
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:18px;
+         box-shadow:0 8px 30px rgba(15,23,42,.06);overflow:hidden}
+  .panel-head{padding:15px 22px;border-bottom:1px solid var(--line);
+              display:flex;align-items:center;justify-content:space-between;gap:10px;
+              background:linear-gradient(180deg,#FBFCFE,#F6F8FC)}
+  .panel-head h3{font-size:14.5px;display:flex;align-items:center;gap:8px}
+  .pill{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+        padding:4px 10px;border-radius:99px;background:#EEF1F6;color:var(--muted);transition:.3s}
+  .pill.on{background:#E8F5EC;color:#1E7B45}
+  .pill.wait{background:#FEF3E2;color:#B8791A}
+  .panel-body{padding:22px}
+
+  /* FORM */
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:12px;font-weight:700;color:var(--dark2);margin-bottom:5px}
+  .field input,.field select{width:100%;padding:11px 13px;border:1.5px solid var(--line);
+    border-radius:10px;font-family:inherit;font-size:13.5px;background:#FBFCFE;transition:.2s;color:var(--txt)}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--sky);
+    background:#fff;box-shadow:0 0 0 4px rgba(2,132,199,.08)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+  .form-note{font-size:11.5px;color:var(--muted);margin-top:13px;background:#F7F9FC;
+             border-left:3px solid var(--gold);padding:9px 12px;border-radius:0 8px 8px 0;line-height:1.5}
+  .form-note b{color:var(--dark2)}
+  .source-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;
+    background:#E0F2FE;color:#0369A1;padding:4px 10px;border-radius:99px;margin-bottom:14px}
+
+  /* CHAT WHATSAPP */
+  .wa{background:var(--wa);border-radius:18px;overflow:hidden;border:1px solid var(--line);
+      box-shadow:0 8px 30px rgba(15,23,42,.08);display:flex;flex-direction:column;height:760px}
+  .wa-head{background:linear-gradient(135deg,#075E54,#0B7268);color:#fff;padding:12px 16px;
+           display:flex;align-items:center;gap:11px;flex-shrink:0}
+  .wa-av{width:40px;height:40px;border-radius:50%;background:var(--gold);display:grid;
+         place-items:center;font-weight:900;color:#0f172a;font-size:14px;flex-shrink:0}
+  .wa-who b{display:block;font-size:14px;font-weight:700}
+  .wa-who span{font-size:11px;color:#A8D5CF;display:flex;align-items:center;gap:5px}
+  .wa-who span i{width:6px;height:6px;background:#4ADE80;border-radius:50%;display:inline-block}
+  .wa-meta{margin-left:auto;font-size:10.5px;color:#A8D5CF;text-align:right;line-height:1.3}
+  .wa-meta b{display:block;color:#fff;font-size:11px}
+
+  .wa-progress{background:#0b7268;padding:6px 16px;display:flex;align-items:center;gap:10px;flex-shrink:0}
+  .wa-progress .bar{flex:1;height:3px;background:rgba(255,255,255,.15);border-radius:99px;overflow:hidden}
+  .wa-progress .bar > div{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--green));
+                          transition:width .5s ease}
+  .wa-progress .lbl{font-size:10.5px;color:#A8D5CF;font-weight:700;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}
+
+  .wa-body{flex:1;overflow-y:auto;padding:18px 14px;background:var(--wa);
+    background-image:repeating-linear-gradient(45deg,rgba(0,0,0,.012) 0 2px,transparent 2px 8px);
+    display:flex;flex-direction:column;gap:8px}
+  .wa-body::-webkit-scrollbar{width:5px}
+  .wa-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15);border-radius:9px}
+  .msg{max-width:86%;padding:9px 12px;border-radius:12px;font-size:13.3px;line-height:1.5;
+       position:relative;word-wrap:break-word;animation:pop .25s ease}
+  @keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .msg.bot{background:#fff;align-self:flex-start;border-top-left-radius:3px;box-shadow:0 1px 2px rgba(0,0,0,.09)}
+  .msg.user{background:var(--greenL);align-self:flex-end;border-top-right-radius:3px;box-shadow:0 1px 2px rgba(0,0,0,.09)}
+  .msg.sys{align-self:center;background:rgba(15,23,42,.08);color:#475569;font-size:11px;
+           padding:5px 13px;border-radius:99px;text-align:center;font-weight:600;max-width:92%}
+  .msg b{font-weight:800;color:#0f172a}
+  .msg .tm{display:block;font-size:9.5px;color:#9AA7B8;text-align:right;margin-top:3px}
+  .msg.user .tm{color:#7FA46B}
+  .msg .check{color:#53BDEB;font-weight:700;font-size:11px;margin-left:4px}
+  .code-box{margin-top:9px;background:linear-gradient(135deg,#0f172a,#1e293b);color:var(--gold);
+            padding:12px 15px;border-radius:10px;font-family:'SF Mono',Consolas,monospace;
+            font-size:15px;font-weight:800;letter-spacing:.12em;text-align:center;
+            border:1px solid var(--gold)}
+
+  .options{display:flex;flex-wrap:wrap;gap:6px;align-self:flex-start;max-width:94%;animation:pop .3s ease}
+  .opt{background:#fff;border:1.5px solid var(--green);color:#075E54;padding:8px 14px;
+       border-radius:99px;font-size:12.2px;font-weight:700;cursor:pointer;transition:.15s}
+  .opt:hover{background:var(--green);color:#fff;transform:translateY(-1px)}
+  .opt.pay{background:var(--gold);border-color:var(--gold);color:#0f172a}
+  .opt.pay:hover{background:var(--gold2);color:#0f172a}
+  .opt.human{background:var(--sky);border-color:var(--sky);color:#fff}
+  .opt.human:hover{background:var(--sky2)}
+
+  .typing{display:flex;gap:4px;padding:11px 14px;background:#fff;border-radius:12px;
+          border-top-left-radius:3px;align-self:flex-start;width:fit-content;box-shadow:0 1px 2px rgba(0,0,0,.09)}
+  .typing i{width:6px;height:6px;background:#B4BECC;border-radius:50%;animation:bnc 1.3s infinite}
+  .typing i:nth-child(2){animation-delay:.18s}
+  .typing i:nth-child(3){animation-delay:.36s}
+  @keyframes bnc{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-5px);opacity:1}}
+
+  .wa-foot{padding:10px 12px;background:#F0F0F0;display:flex;gap:8px;align-items:center;
+           border-top:1px solid #DCDCDC;flex-shrink:0}
+  .wa-foot input{flex:1;padding:10px 15px;border:none;border-radius:99px;font-family:inherit;
+                 font-size:13px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+  .wa-foot input:focus{outline:none}
+  .wa-foot input:disabled{opacity:.5}
+  .wa-foot button{width:40px;height:40px;border-radius:50%;border:none;background:var(--green);
+                  color:#fff;cursor:pointer;display:grid;place-items:center;flex-shrink:0;transition:.2s}
+  .wa-foot button:hover{background:#1fbe5b}
+  .wa-foot button:disabled{opacity:.4;cursor:not-allowed}
+
+  /* ============ BACK-OFFICE ============ */
+  #backoffice{background:linear-gradient(180deg,#f8fafc,#eef2f7)}
+  .back-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:20px;align-items:start}
+  @media(max-width:980px){.back-grid{grid-template-columns:1fr}}
+
+  .bo-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;
+           box-shadow:0 8px 30px rgba(15,23,42,.06)}
+  .bo-card h4{font-size:13.5px;margin-bottom:14px;display:flex;align-items:center;gap:8px;
+              text-transform:uppercase;letter-spacing:.08em;color:var(--slate)}
+  .bo-card h4 .dot2{width:8px;height:8px;border-radius:50%;background:var(--sky)}
+  .lead-card{background:var(--card);border:1px solid var(--line);border-radius:18px;
+             padding:24px;box-shadow:0 8px 30px rgba(15,23,42,.06)}
+  .lead-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+  .lead-id{display:flex;align-items:center;gap:13px}
+  .lead-av{width:52px;height:52px;border-radius:14px;background:linear-gradient(140deg,var(--sky),var(--sky2));
+           color:#fff;display:grid;place-items:center;font-weight:900;font-size:17px;transition:.3s}
+  .lead-id h4{font-size:16.5px}
+  .lead-id span{font-size:12px;color:var(--muted)}
+  .status{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+          padding:6px 13px;border-radius:99px;background:#EEF1F6;color:var(--muted);transition:.3s}
+  .status.active{background:#E8F0FE;color:#1A56C4}
+  .status.ok{background:#E8F5EC;color:#1E7B45}
+  .status.warn{background:#FEF3E2;color:#B8791A}
+  .status.hot{background:#FDECEA;color:#C0392B}
+
+  .kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;
+      padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .kv span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+           text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+  .kv strong{font-size:14px;font-weight:700}
+
+  .score-meter{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+  .score-meter .score-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .score-meter .score-head b{font-size:22px;font-weight:900}
+  .score-meter .score-head span{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em}
+  .score-bar{height:8px;background:#EEF1F6;border-radius:99px;overflow:hidden}
+  .score-bar > div{height:100%;width:0;border-radius:99px;
+                   background:linear-gradient(90deg,#25D366,#f59e0b);
+                   transition:width 1s cubic-bezier(.2,.8,.3,1)}
+
+  .alert{background:#FFF9EC;border:1px solid #F3DFAE;border-radius:12px;padding:13px;
+         font-size:12.5px;color:#8A6A15;line-height:1.5;margin-bottom:9px;animation:pop .3s ease}
+  .alert b{color:#6B5210}
+  .alert.email{background:#EFF6FF;border-color:#BFDBFE;color:#1E40AF}
+  .alert.email b{color:#1E3A8A}
+  .alert.wa{background:#ECFDF5;border-color:#A7F3D0;color:#065F46}
+  .alert.wa b{color:#064E3B}
+  .alert.crm{background:#F5F3FF;border-color:#DDD6FE;color:#5B21B6}
+  .alert.crm b{color:#4C1D95}
+
+  .sales{display:flex;align-items:center;gap:12px;padding:13px;border-radius:12px;
+         background:#F7F9FC;border:1px solid var(--line);transition:.3s;margin-bottom:12px}
+  .sales.empty{opacity:.5}
+  .sales .av{width:44px;height:44px;border-radius:50%;background:linear-gradient(140deg,var(--sky),var(--sky2));
+             color:#fff;display:grid;place-items:center;font-weight:800;font-size:13px;flex-shrink:0}
+  .sales b{display:block;font-size:13.5px}
+  .sales span{font-size:11.5px;color:var(--muted)}
+  .sales .tag2{margin-left:auto;font-size:9.5px;font-weight:800;text-transform:uppercase;
+               letter-spacing:.05em;color:#1E7B45;background:#DCF8C6;padding:3px 8px;border-radius:5px}
+
+  /* ============ ARCHI ============ */
+  #archi{background:linear-gradient(180deg,#0f172a,#1e293b);color:#fff}
+  #archi .sec-head h2{color:#fff}
+  #archi .sec-head p{color:#9FB0C9}
+  #archi .eyebrow{color:var(--gold)}
+  .flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+  .step{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.11);
+        border-radius:14px;padding:18px 16px;transition:.28s}
+  .step:hover{background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.4);transform:translateY(-4px)}
+  .step .n{width:28px;height:28px;border-radius:8px;background:var(--gold);color:#0f172a;
+           display:grid;place-items:center;font-weight:900;font-size:12.5px;margin-bottom:12px}
+  .step h4{font-size:14px;margin-bottom:6px;color:#fff}
+  .step p{font-size:12px;color:#9FB0C9;line-height:1.5}
+
+  /* ============ FOOTER ============ */
+  footer{background:#081327;color:#7C8DA6;padding:38px 0 28px;font-size:12.5px;text-align:center}
+  footer b{color:#fff}
+
+  /* ============ TOAST ============ */
+  .toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,150%);
+         background:var(--dark);color:#fff;padding:13px 22px;border-radius:12px;
+         font-size:13px;font-weight:600;box-shadow:0 18px 50px rgba(0,0,0,.3);z-index:999;
+         transition:.4s cubic-bezier(.2,.9,.3,1.2);display:flex;align-items:center;gap:10px;max-width:90vw}
+  .toast.show{transform:translate(-50%,0)}
+  .toast i{width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0}
+
+  /* Restart floating */
+  .restart-fab{position:fixed;bottom:24px;right:24px;width:52px;height:52px;border-radius:50%;
+               background:var(--sky);color:#fff;border:none;cursor:pointer;display:none;
+               align-items:center;justify-content:center;font-size:22px;z-index:90;
+               box-shadow:0 12px 30px rgba(2,132,199,.4);transition:.25s}
+  .restart-fab:hover{background:var(--sky2);transform:rotate(180deg) scale(1.05)}
+  .restart-fab.show{display:flex}
+
+  /* ============ WHATSAPP TRANSITION SPLASH ============ */
+  .wa-splash{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#075E54,#0B7268);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    opacity:0;pointer-events:none;transition:opacity .35s ease}
+  .wa-splash.show{opacity:1;pointer-events:auto}
+  .wa-splash .wa-logo{width:96px;height:96px;border-radius:50%;background:#fff;
+    display:grid;place-items:center;margin-bottom:24px;animation:waPulse 1.2s ease-in-out infinite;
+    box-shadow:0 20px 60px rgba(0,0,0,.3)}
+  .wa-splash .wa-logo svg{width:52px;height:52px;fill:#25D366}
+  @keyframes waPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+  .wa-splash h3{color:#fff;font-size:20px;font-weight:800;margin-bottom:8px;letter-spacing:-.01em}
+  .wa-splash p{color:#A8D5CF;font-size:13.5px;font-weight:600;margin-bottom:26px;text-align:center;padding:0 20px}
+  .wa-splash .wa-bar{width:220px;height:4px;background:rgba(255,255,255,.15);
+    border-radius:99px;overflow:hidden}
+  .wa-splash .wa-bar > div{height:100%;width:0;background:#fff;border-radius:99px;
+    animation:waLoad 1.2s ease forwards}
+  @keyframes waLoad{from{width:0}to{width:100%}}
+  .wa-splash .wa-phone{font-size:12px;color:#A8D5CF;margin-top:16px;font-weight:600;letter-spacing:.05em}
+
+  /* Bouton avec spinner */
+  .btn .spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);
+    border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:inline-block}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  @media(max-width:600px){
+    .hero-stats{gap:22px}
+    .back-grid{gap:14px}
+    .wa{height:640px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="fly-plane">✈️</div>
+  <div class="wrap nav">
+    <div class="brand">
+      <span class="plane">✈️</span>
+      <div>
+        <b>Bigongdeou Travels</b>
+        <span data-i18n="brand.sub">Agence de voyage · Lomé, Togo</span>
+      </div>
+    </div>
+    <div class="nav-right">
+      <span class="qdw-badge" data-i18n="brand.powered">Propulsé par QDW</span>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button id="lang-fr" class="active" onclick="setLang('fr')">🇫🇷 FR</button>
+        <button id="lang-en" onclick="setLang('en')">🇬🇧 EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-badge"><i></i> <span data-i18n="hero.badge">Démonstration live · Quantum Digital Wire</span></div>
+    <h1 data-i18n-html="hero.title">Le tunnel de réservation <em>100 % automatisé</em> pour Bigongdeou Travels</h1>
+    <p class="lead" data-i18n="hero.sub">Capture du lead → bot WhatsApp multilingue → qualification → traitement des objections → paiement de l'acompte → code unique → alerte commerciale. Chaque clic déclenche réellement l'étape suivante.</p>
+    <div class="hero-cta">
+      <button class="btn btn-gold" id="autoBtn">
+        <span data-i18n="hero.cta1">▶ Lancer la simulation automatique</span>
+      </button>
+      <a href="#demo" class="btn btn-ghost" data-i18n="hero.cta2">Essayer en mode interactif</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><b>&lt; 30 s</b><span data-i18n="hero.stat1">Temps de réponse lead</span></div>
+      <div class="hstat"><b>24 / 7</b><span data-i18n="hero.stat2">Qualification automatique</span></div>
+      <div class="hstat"><b>+12</b><span data-i18n="hero.stat3">Champs collectés</span></div>
+      <div class="hstat"><b>4</b><span data-i18n="hero.stat4">Intégrations déclenchées</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DEMO ================= -->
+<section id="demo">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="demo.eyebrow">Simulation complète</span>
+      <h2 data-i18n="demo.title">Le prospect remplit le formulaire, le bot prend le relais</h2>
+      <p data-i18n="demo.sub">Remplissez le formulaire (ou gardez les valeurs par défaut) puis cliquez sur « Envoyer vers WhatsApp ». Le chatbot bilingue collecte les données, traite les objections et déclenche l'ensemble du back-office en direct.</p>
+    </div>
+
+    <div class="demo-grid">
+      <!-- FORMULAIRE -->
+      <div class="panel">
+        <div class="panel-head">
+          <h3>🌐 <span data-i18n="form.title">Formulaire — Page site web Bigongdeou</span></h3>
+          <span class="pill" id="formPill" data-i18n="form.pill">Étape 1</span>
+        </div>
+        <div class="panel-body">
+          <div class="source-badge">
+            📡 <span data-i18n="form.source">Source détectée :</span> <b id="srcLabel">website</b>
+          </div>
+          <form id="leadForm">
+            <div class="row2">
+              <div class="field"><label data-i18n="form.fname">Prénom *</label><input id="f_prenom" type="text" value="Amine" required></div>
+              <div class="field"><label data-i18n="form.lname">Nom *</label><input id="f_nom" type="text" value="Kouassi" required></div>
+            </div>
+            <div class="field"><label data-i18n="form.email">Email *</label><input id="f_email" type="email" value="amine.kouassi@example.com" required></div>
+            <div class="row2">
+              <div class="field"><label data-i18n="form.indic">Indicatif</label>
+                <select id="f_indic">
+                  <option value="+228" selected>🇹🇬 +228 Togo</option>
+                  <option value="+225">🇨🇮 +225 Côte d'Ivoire</option>
+                  <option value="+229">🇧🇯 +229 Bénin</option>
+                  <option value="+233">🇬🇭 +233 Ghana</option>
+                  <option value="+33">🇫🇷 +33 France</option>
+                </select>
+              </div>
+              <div class="field"><label data-i18n="form.phone">Téléphone *</label><input id="f_tel" type="tel" value="90123456" required></div>
+            </div>
+            <div class="field"><label data-i18n="form.dest">Destination souhaitée *</label>
+              <select id="f_dest">
+                <option value="paris" data-i18n="dest.paris">🇫🇷 Paris (France)</option>
+                <option value="abidjan" data-i18n="dest.abidjan">🇨🇮 Abidjan (Côte d'Ivoire)</option>
+                <option value="accra" data-i18n="dest.accra">🇬🇭 Accra (Ghana)</option>
+                <option value="lagos" data-i18n="dest.lagos">🇳🇬 Lagos (Nigeria)</option>
+                <option value="dakar" data-i18n="dest.dakar">🇸🇳 Dakar (Sénégal)</option>
+                <option value="dubai" data-i18n="dest.dubai">🇦🇪 Dubaï (EAU)</option>
+                <option value="montreal" data-i18n="dest.montreal">🇨🇦 Montréal (Canada)</option>
+                <option value="bruxelles" data-i18n="dest.bruxelles">🇧🇪 Bruxelles (Belgique)</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-green" style="width:100%;margin-top:6px" id="submitBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+              <span data-i18n="form.cta">Envoyer vers WhatsApp</span>
+            </button>
+          </form>
+          <a href="https://wa.me/22890000000?text=Bonjour%20Bigongdeou%20Travels%2C%20je%20souhaite%20un%20devis%20pour%20un%20vol."
+             target="_blank" rel="noopener"
+             class="btn"
+             style="width:100%;margin-top:10px;background:transparent;color:var(--green);border:1.5px solid var(--green)">
+            📲 <span data-i18n="form.waReal">Tester le vrai numéro WhatsApp</span>
+          </a>
+          <div class="form-note" data-i18n-html="form.note">
+            🔒 <b>En production :</b> ce formulaire déclenche un webhook vers l'API WhatsApp Business Cloud. Le lead est créé dans le CRM avant même l'ouverture de la conversation.
+          </div>
+          <button class="btn" id="resetBtn" style="width:100%;margin-top:12px;background:#F2F5FA;color:var(--dark);border:1px solid var(--line)">
+            <span data-i18n="form.reset">↺ Réinitialiser la démo</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- CHAT -->
+      <div class="panel" style="overflow:visible;border:none;box-shadow:none;background:transparent">
+        <div class="wa">
+          <div class="wa-head">
+            <div class="wa-av">BT</div>
+            <div class="wa-who">
+              <b>Bigongdeou Assistant</b>
+              <span><i></i> <span data-i18n="chat.online">en ligne · répond instantanément</span></span>
+            </div>
+            <div class="wa-meta"><b>WhatsApp Business</b>+228 90 XX XX XX</div>
+          </div>
+          <div class="wa-progress">
+            <span class="lbl" id="stepLbl" data-i18n="chat.step">Étape 0/8</span>
+            <div class="bar"><div id="progBar"></div></div>
+          </div>
+          <div class="wa-body" id="chat"></div>
+          <div class="wa-foot">
+            <input type="text" id="chatInput" placeholder="…" disabled>
+            <button id="sendBtn" disabled>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BACK-OFFICE ================= -->
+<section id="backoffice">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="bo.eyebrow">Back-office temps réel</span>
+      <h2 data-i18n="bo.title">Ce que voit l'agence pendant la conversation</h2>
+      <p data-i18n="bo.sub">Chaque champ collecté, chaque action déclenchée et chaque alerte commerciale s'affiche ici en direct — c'est la valeur business de l'automatisation.</p>
+    </div>
+
+    <div class="back-grid">
+      <div class="lead-card">
+        <div class="lead-top">
+          <div class="lead-id">
+            <div class="lead-av" id="leadAv">—</div>
+            <div>
+              <h4 id="leadName" data-i18n="bo.waitLead">En attente de lead…</h4>
+              <span id="leadContact" data-i18n="bo.noData">Aucune donnée</span>
+            </div>
+          </div>
+          <span class="status" id="leadStatus">● <span data-i18n="bo.noLead">Aucun lead</span></span>
+        </div>
+
+        <div class="kv">
+          <div><span data-i18n="bo.kvDest">Destination</span><strong id="kvDest">—</strong></div>
+          <div><span data-i18n="bo.kvDates">Dates</span><strong id="kvDates">—</strong></div>
+          <div><span data-i18n="bo.kvPax">Passagers</span><strong id="kvPax">—</strong></div>
+          <div><span data-i18n="bo.kvOffer">Offre</span><strong id="kvOffer">—</strong></div>
+          <div><span data-i18n="bo.kvNationality">Nationalité</span><strong id="kvNat">—</strong></div>
+          <div><span data-i18n="bo.kvVisa">Assistance visa</span><strong id="kvVisa">—</strong></div>
+          <div><span data-i18n="bo.kvCode">Code réservation</span><strong id="kvCode" style="font-family:monospace;color:var(--sky2)">—</strong></div>
+        </div>
+
+        <div class="score-meter">
+          <div class="score-head">
+            <b id="scoreVal">—</b>
+            <span id="scoreLbl" style="color:var(--muted)" data-i18n="bo.scoreIdle">Score en attente</span>
+          </div>
+          <div class="score-bar"><div id="scoreBar"></div></div>
+        </div>
+      </div>
+
+      <div class="bo-card">
+        <h4><span class="dot2"></span> <span data-i18n="bo.alerts">Alertes back-office</span></h4>
+        <div id="alertZone">
+          <div class="alert" style="background:#F7F9FC;border-color:var(--line);color:var(--muted)" data-i18n="bo.noAlerts">
+            Aucune alerte pour l'instant. Lancez la démo pour voir les notifications s'afficher en direct.
+          </div>
+        </div>
+      </div>
+
+      <div class="bo-card">
+        <h4><span class="dot2" style="background:var(--green)"></span> <span data-i18n="bo.rep">Commercial assigné</span></h4>
+        <div class="sales empty" id="salesCard">
+          <div class="av">?</div>
+          <div>
+            <b data-i18n="bo.noAssign">Aucune assignation</b>
+            <span data-i18n="bo.waitPay">En attente du paiement</span>
+          </div>
+        </div>
+
+        <h4 style="margin-top:20px"><span class="dot2" style="background:var(--gold)"></span> <span data-i18n="bo.integrations">Intégrations prêtes</span></h4>
+        <div style="font-size:12.5px;color:var(--muted);line-height:1.8">
+          📧 <span data-i18n="bo.int1">Email transactionnel</span><br>
+          📲 <span data-i18n="bo.int2">WhatsApp Business API</span><br>
+          📊 <span data-i18n="bo.int3">CRM (fiche lead)</span><br>
+          💳 <span data-i18n="bo.int4">Passerelle paiement</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ARCHI ================= -->
+<section id="archi">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="archi.eyebrow">Sous le capot</span>
+      <h2 data-i18n="archi.title">Les 8 étapes du tunnel automatisé</h2>
+      <p data-i18n="archi.sub">Zéro intervention humaine de la capture jusqu'à l'assignation du conseiller, en français et en anglais.</p>
+    </div>
+    <div class="flow">
+      <div class="step"><div class="n">1</div><h4 data-i18n="archi.s1t">Capture du lead</h4><p data-i18n="archi.s1p">Formulaire site + Ads, source détectée automatiquement.</p></div>
+      <div class="step"><div class="n">2</div><h4 data-i18n="archi.s2t">Webhook & CRM</h4><p data-i18n="archi.s2p">Fiche lead créée avant même l'ouverture du chat.</p></div>
+      <div class="step"><div class="n">3</div><h4 data-i18n="archi.s3t">Bot WhatsApp</h4><p data-i18n="archi.s3p">Multilingue FR/EN · réponse en moins de 30 secondes.</p></div>
+      <div class="step"><div class="n">4</div><h4 data-i18n="archi.s4t">Qualification</h4><p data-i18n="archi.s4p">Dates, passagers, nationalité, visa — collecte complète.</p></div>
+      <div class="step"><div class="n">5</div><h4 data-i18n="archi.s5t">Objections</h4><p data-i18n="archi.s5p">Prix, timing, visa, hésitation — scripts dédiés.</p></div>
+      <div class="step"><div class="n">6</div><h4 data-i18n="archi.s6t">Scoring du lead</h4><p data-i18n="archi.s6p">Score 0-100 basé sur intention, budget, urgence.</p></div>
+      <div class="step"><div class="n">7</div><h4 data-i18n="archi.s7t">Paiement + code</h4><p data-i18n="archi.s7p">Acompte · code unique traçable · documentation.</p></div>
+      <div class="step"><div class="n">8</div><h4 data-i18n="archi.s8t">Alerte commerciale</h4><p data-i18n="archi.s8p">Email + WhatsApp + CRM instantanés au conseiller assigné.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <b>Bigongdeou Travels</b> · Lomé, Togo — <span data-i18n="footer.tag">Démonstration produit</span><br>
+    <span data-i18n="footer.qdw">Architecture & automatisation par</span> <b>Quantum Digital Wire (QDW)</b>
+  </div>
+</footer>
+
+<!-- WhatsApp transition splash -->
+<div class="wa-splash" id="waSplash">
+  <div class="wa-logo">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  </div>
+  <h3 id="waSplashTitle">Ouverture de WhatsApp…</h3>
+  <p id="waSplashSub">Connexion au numéro +228 90 XX XX XX</p>
+  <div class="wa-bar"><div></div></div>
+  <div class="wa-phone">🔒 Connexion chiffrée de bout en bout</div>
+</div>
+
+<div class="toast" id="toast"><i></i><span id="toastTxt"></span></div>
+<button class="restart-fab" id="restartFab" title="Restart">↺</button>
+
+<script>
+(function(){
+'use strict';
+
+/* ============================================================
+   I18N
+   ============================================================ */
+const I18N = {
+  fr: {
+    'brand.sub':'Agence de voyage · Lomé, Togo',
+    'brand.powered':'Propulsé par QDW',
+    'hero.badge':'Démonstration live · Quantum Digital Wire',
+    'hero.title':'Le tunnel de réservation <em>100 % automatisé</em> pour Bigongdeou Travels',
+    'hero.sub':'Capture du lead → bot WhatsApp multilingue → qualification → traitement des objections → paiement de l\'acompte → code unique → alerte commerciale. Chaque clic déclenche réellement l\'étape suivante.',
+    'hero.cta1':'▶ Lancer la simulation automatique',
+    'hero.cta2':'Essayer en mode interactif',
+    'hero.stat1':'Temps de réponse lead',
+    'hero.stat2':'Qualification automatique',
+    'hero.stat3':'Champs collectés',
+    'hero.stat4':'Intégrations déclenchées',
+    'demo.eyebrow':'Simulation complète',
+    'demo.title':'Le prospect remplit le formulaire, le bot prend le relais',
+    'demo.sub':'Remplissez le formulaire (ou gardez les valeurs par défaut) puis cliquez sur « Envoyer vers WhatsApp ». Le chatbot bilingue collecte les données, traite les objections et déclenche l\'ensemble du back-office en direct.',
+    'form.title':'Formulaire — Page site web Bigongdeou',
+    'form.pill':'Étape 1',
+    'form.source':'Source détectée :',
+    'form.fname':'Prénom *',
+    'form.lname':'Nom *',
+    'form.email':'Email *',
+    'form.indic':'Indicatif',
+    'form.phone':'Téléphone *',
+    'form.dest':'Destination souhaitée *',
+    'form.cta':'Envoyer vers WhatsApp',
+    'form.waReal':'Tester le vrai numéro WhatsApp',
+    'form.note':'🔒 <b>En production :</b> ce formulaire déclenche un webhook vers l\'API WhatsApp Business Cloud. Le lead est créé dans le CRM avant même l\'ouverture de la conversation.',
+    'form.reset':'↺ Réinitialiser la démo',
+    'dest.paris':'🇫🇷 Paris (France)',
+    'dest.abidjan':'🇨🇮 Abidjan (Côte d\'Ivoire)',
+    'dest.accra':'🇬🇭 Accra (Ghana)',
+    'dest.lagos':'🇳🇬 Lagos (Nigeria)',
+    'dest.dakar':'🇸🇳 Dakar (Sénégal)',
+    'dest.dubai':'🇦🇪 Dubaï (EAU)',
+    'dest.montreal':'🇨🇦 Montréal (Canada)',
+    'dest.bruxelles':'🇧🇪 Bruxelles (Belgique)',
+    'chat.online':'en ligne · répond instantanément',
+    'chat.step':'Étape 0/8',
+    'bo.eyebrow':'Back-office temps réel',
+    'bo.title':'Ce que voit l\'agence pendant la conversation',
+    'bo.sub':'Chaque champ collecté, chaque action déclenchée et chaque alerte commerciale s\'affiche ici en direct — c\'est la valeur business de l\'automatisation.',
+    'bo.waitLead':'En attente de lead…',
+    'bo.noData':'Aucune donnée',
+    'bo.noLead':'Aucun lead',
+    'bo.kvDest':'Destination',
+    'bo.kvDates':'Dates',
+    'bo.kvPax':'Passagers',
+    'bo.kvOffer':'Offre',
+    'bo.kvNationality':'Nationalité',
+    'bo.kvVisa':'Assistance visa',
+    'bo.kvCode':'Code réservation',
+    'bo.scoreIdle':'Score en attente',
+    'bo.alerts':'Alertes back-office',
+    'bo.noAlerts':'Aucune alerte pour l\'instant. Lancez la démo pour voir les notifications s\'afficher en direct.',
+    'bo.rep':'Commercial assigné',
+    'bo.noAssign':'Aucune assignation',
+    'bo.waitPay':'En attente du paiement',
+    'bo.integrations':'Intégrations prêtes',
+    'bo.int1':'Email transactionnel',
+    'bo.int2':'WhatsApp Business API',
+    'bo.int3':'CRM (fiche lead)',
+    'bo.int4':'Passerelle paiement',
+    'archi.eyebrow':'Sous le capot',
+    'archi.title':'Les 8 étapes du tunnel automatisé',
+    'archi.sub':'Zéro intervention humaine de la capture jusqu\'à l\'assignation du conseiller, en français et en anglais.',
+    'archi.s1t':'Capture du lead',
+    'archi.s1p':'Formulaire site + Ads, source détectée automatiquement.',
+    'archi.s2t':'Webhook & CRM',
+    'archi.s2p':'Fiche lead créée avant même l\'ouverture du chat.',
+    'archi.s3t':'Bot WhatsApp',
+    'archi.s3p':'Multilingue FR/EN · réponse en moins de 30 secondes.',
+    'archi.s4t':'Qualification',
+    'archi.s4p':'Dates, passagers, nationalité, visa — collecte complète.',
+    'archi.s5t':'Objections',
+    'archi.s5p':'Prix, timing, visa, hésitation — scripts dédiés.',
+    'archi.s6t':'Scoring du lead',
+    'archi.s6p':'Score 0-100 basé sur intention, budget, urgence.',
+    'archi.s7t':'Paiement + code',
+    'archi.s7p':'Acompte · code unique traçable · documentation.',
+    'archi.s8t':'Alerte commerciale',
+    'archi.s8p':'Email + WhatsApp + CRM instantanés au conseiller assigné.',
+    'footer.tag':'Démonstration produit',
+    'footer.qdw':'Architecture & automatisation par'
+  },
+  en: {
+    'brand.sub':'Travel agency · Lomé, Togo',
+    'brand.powered':'Powered by QDW',
+    'hero.badge':'Live demonstration · Quantum Digital Wire',
+    'hero.title':'The <em>fully automated</em> booking tunnel for Bigongdeou Travels',
+    'hero.sub':'Lead capture → multilingual WhatsApp bot → qualification → objection handling → deposit payment → unique code → sales rep alert. Every click truly triggers the next step.',
+    'hero.cta1':'▶ Run automatic simulation',
+    'hero.cta2':'Try interactive mode',
+    'hero.stat1':'Lead response time',
+    'hero.stat2':'Automatic qualification',
+    'hero.stat3':'Fields collected',
+    'hero.stat4':'Integrations triggered',
+    'demo.eyebrow':'Full simulation',
+    'demo.title':'The prospect fills the form, the bot takes over',
+    'demo.sub':'Fill in the form (or keep the defaults) and click « Send to WhatsApp ». The bilingual chatbot collects the data, handles objections and triggers the whole back-office live.',
+    'form.title':'Form — Bigongdeou website page',
+    'form.pill':'Step 1',
+    'form.source':'Detected source:',
+    'form.fname':'First name *',
+    'form.lname':'Last name *',
+    'form.email':'Email *',
+    'form.indic':'Country code',
+    'form.phone':'Phone *',
+    'form.dest':'Desired destination *',
+    'form.cta':'Send to WhatsApp',
+    'form.waReal':'Try the real WhatsApp number',
+    'form.note':'🔒 <b>In production:</b> this form triggers a webhook to the WhatsApp Business Cloud API. The lead is created in the CRM before the chat even opens.',
+    'form.reset':'↺ Reset demo',
+    'dest.paris':'🇫🇷 Paris (France)',
+    'dest.abidjan':'🇨🇮 Abidjan (Ivory Coast)',
+    'dest.accra':'🇬🇭 Accra (Ghana)',
+    'dest.lagos':'🇳🇬 Lagos (Nigeria)',
+    'dest.dakar':'🇸🇳 Dakar (Senegal)',
+    'dest.dubai':'🇦🇪 Dubai (UAE)',
+    'dest.montreal':'🇨🇦 Montreal (Canada)',
+    'dest.bruxelles':'🇧🇪 Brussels (Belgium)',
+    'chat.online':'online · replies instantly',
+    'chat.step':'Step 0/8',
+    'bo.eyebrow':'Real-time back-office',
+    'bo.title':'What the agency sees during the conversation',
+    'bo.sub':'Every field collected, every triggered action and every sales alert shows up here live — this is the business value of automation.',
+    'bo.waitLead':'Waiting for a lead…',
+    'bo.noData':'No data yet',
+    'bo.noLead':'No lead',
+    'bo.kvDest':'Destination',
+    'bo.kvDates':'Dates',
+    'bo.kvPax':'Passengers',
+    'bo.kvOffer':'Offer',
+    'bo.kvNationality':'Nationality',
+    'bo.kvVisa':'Visa assistance',
+    'bo.kvCode':'Booking code',
+    'bo.scoreIdle':'Score pending',
+    'bo.alerts':'Back-office alerts',
+    'bo.noAlerts':'No alerts yet. Run the demo to see notifications appear live.',
+    'bo.rep':'Assigned sales rep',
+    'bo.noAssign':'No assignment yet',
+    'bo.waitPay':'Waiting for payment',
+    'bo.integrations':'Ready integrations',
+    'bo.int1':'Transactional email',
+    'bo.int2':'WhatsApp Business API',
+    'bo.int3':'CRM (lead record)',
+    'bo.int4':'Payment gateway',
+    'archi.eyebrow':'Under the hood',
+    'archi.title':'The 8 steps of the automated tunnel',
+    'archi.sub':'Zero human intervention from capture to advisor assignment, in French and English.',
+    'archi.s1t':'Lead capture',
+    'archi.s1p':'Site form + Ads, auto-detected source.',
+    'archi.s2t':'Webhook & CRM',
+    'archi.s2p':'Lead record created before the chat even opens.',
+    'archi.s3t':'WhatsApp bot',
+    'archi.s3p':'Bilingual FR/EN · reply in under 30 seconds.',
+    'archi.s4t':'Qualification',
+    'archi.s4p':'Dates, passengers, nationality, visa — full intake.',
+    'archi.s5t':'Objections',
+    'archi.s5p':'Price, timing, visa, hesitation — dedicated scripts.',
+    'archi.s6t':'Lead scoring',
+    'archi.s6p':'Score 0-100 based on intent, budget, urgency.',
+    'archi.s7t':'Payment + code',
+    'archi.s7p':'Deposit · unique traceable code · documentation.',
+    'archi.s8t':'Sales rep alert',
+    'archi.s8p':'Email + WhatsApp + CRM instantly to the assigned advisor.',
+    'footer.tag':'Product demonstration',
+    'footer.qdw':'Architecture & automation by'
+  }
+};
+
+let LANG = 'fr';
+function t(key){ return I18N[LANG][key] || key; }
+
+function setLang(lang){
+  LANG = lang;
+  document.documentElement.lang = lang;
+  const frBtn = document.getElementById('lang-fr');
+  const enBtn = document.getElementById('lang-en');
+  if(frBtn) frBtn.classList.toggle('active', lang==='fr');
+  if(enBtn) enBtn.classList.toggle('active', lang==='en');
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(I18N[LANG][k]) el.textContent = I18N[LANG][k];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    const k = el.getAttribute('data-i18n-html');
+    if(I18N[LANG][k]) el.innerHTML = I18N[LANG][k];
+  });
+  updateStepLabel();
+}
+window.setLang = setLang;
+
+/* ============================================================
+   STATE
+   ============================================================ */
+const $ = id => document.getElementById(id);
+const chat = $('chat');
+const chatInput = $('chatInput');
+const sendBtn = $('sendBtn');
+const leadForm = $('leadForm');
+const submitBtn = $('submitBtn');
+
+let inputResolver = null;
+let demoRunning = false;
+let abortDemo = false;
+let currentStep = 0;
+const TOTAL_STEPS = 8;
+
+const state = {
+  lead: null,
+  destination: null,
+  dates: null,
+  passengers: null,
+  offer: null,
+  nationality: null,
+  visa: null,
+  objection: null,
+  score: 0,
+  temp: '',
+  code: null,
+  salesRep: null
+};
+
+const DESTINATIONS = {
+  paris:     { fr:'Paris (France)',        en:'Paris (France)',        emoji:'🇫🇷' },
+  abidjan:   { fr:'Abidjan (Côte d\'Ivoire)', en:'Abidjan (Ivory Coast)', emoji:'🇨🇮' },
+  accra:     { fr:'Accra (Ghana)',         en:'Accra (Ghana)',         emoji:'🇬🇭' },
+  lagos:     { fr:'Lagos (Nigeria)',       en:'Lagos (Nigeria)',       emoji:'🇳🇬' },
+  dakar:     { fr:'Dakar (Sénégal)',       en:'Dakar (Senegal)',       emoji:'🇸🇳' },
+  dubai:     { fr:'Dubaï (EAU)',           en:'Dubai (UAE)',           emoji:'🇦🇪' },
+  montreal:  { fr:'Montréal (Canada)',     en:'Montreal (Canada)',     emoji:'🇨🇦' },
+  bruxelles: { fr:'Bruxelles (Belgique)',  en:'Brussels (Belgium)',    emoji:'🇧🇪' }
+};
+
+const SALES_REPS = [
+  { nom:'Aïcha Diallo',    ville:'Lomé',     langues:'FR / EN',   tel:'+228 90 12 34 56', zones:'Europe · Afrique de l\'Ouest' },
+  { nom:'Kossi Mensah',    ville:'Lomé',     langues:'FR / EN',   tel:'+228 91 22 33 44', zones:'Amérique du Nord · Moyen-Orient' },
+  { nom:'Fatou Traoré',    ville:'Lomé',     langues:'FR / EN',   tel:'+228 92 55 66 77', zones:'Afrique centrale · Caraïbes' }
+];
+let repIdx = 0;
+function nextSalesRep(){ const r = SALES_REPS[repIdx % SALES_REPS.length]; repIdx++; return r; }
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+function nowTime(){
+  return new Date().toLocaleTimeString(LANG==='fr'?'fr-FR':'en-GB',{hour:'2-digit',minute:'2-digit'});
+}
+function scrollChat(){ chat.scrollTop = chat.scrollHeight; }
+function initials(a,b){ return ((a||'?')[0] + (b||'?')[0]).toUpperCase(); }
+
+function addMsg(html, who){
+  who = who || 'bot';
+  const d = document.createElement('div');
+  d.className = 'msg ' + who;
+  const check = who==='bot' ? '<span class="check">✓✓</span>' : '';
+  d.innerHTML = html + '<span class="tm">' + nowTime() + check + '</span>';
+  chat.appendChild(d);
+  scrollChat();
+  return d;
+}
+function addSys(txt){
+  const d = document.createElement('div');
+  d.className = 'msg sys';
+  d.textContent = txt;
+  chat.appendChild(d); scrollChat();
+}
+function showTyping(){
+  hideTyping();
+  const d = document.createElement('div');
+  d.className='typing'; d.id='typingInd';
+  d.innerHTML='<i></i><i></i><i></i>';
+  chat.appendChild(d); scrollChat();
+}
+function hideTyping(){ const x=$('typingInd'); if(x) x.remove(); }
+
+function botSay(html, delay){
+  delay = delay || 700;
+  return new Promise(res=>{
+    showTyping();
+    setTimeout(()=>{ hideTyping(); addMsg(html,'bot'); res(); }, delay);
+  });
+}
+function toast(txt){
+  const t = $('toast');
+  $('toastTxt').textContent = txt;
+  t.classList.add('show');
+  clearTimeout(t._tm);
+  t._tm = setTimeout(()=>t.classList.remove('show'), 3200);
+}
+
+function askOptions(opts){
+  return new Promise(resolve=>{
+    const wrap = document.createElement('div');
+    wrap.className='options';
+    function done(val){
+      wrap.remove();
+      inputResolver = null;
+      resolve(val);
+    }
+    opts.forEach(o=>{
+      const b = document.createElement('button');
+      b.type='button';
+      b.className = 'opt' + (o.pay?' pay':'') + (o.human?' human':'');
+      b.textContent = o.label;
+      b.addEventListener('click', ()=>{
+        if(wrap.dataset.done) return;
+        wrap.dataset.done='1';
+        addMsg(o.label, 'user');
+        done(o.value);
+      });
+      wrap.appendChild(b);
+    });
+    chat.appendChild(wrap);
+    scrollChat();
+    inputResolver = (txt)=>{
+      if(wrap.dataset.done) return;
+      wrap.dataset.done='1';
+      addMsg(txt,'user');
+      done('__text__:'+txt);
+    };
+  });
+}
+
+function handleManualSend(){
+  const v = chatInput.value.trim();
+  if(!v) return;
+  chatInput.value='';
+  if(inputResolver){
+    const r = inputResolver; inputResolver=null; r(v);
+  } else {
+    addMsg(v,'user');
+    setTimeout(()=>botSay(LANG==='fr'?'Merci pour votre message 🙏 Utilisez les boutons ci-dessous pour avancer plus rapidement.':'Thanks for your message 🙏 Use the buttons below to move faster.'), 600);
+  }
+}
+sendBtn.addEventListener('click', handleManualSend);
+chatInput.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); handleManualSend(); } });
+
+/* ============================================================
+   PIPELINE / UI UPDATES
+   ============================================================ */
+function setStatus(txt, cls){
+  const el = $('leadStatus');
+  el.className = 'status ' + (cls||'');
+  el.innerHTML = '● <span>' + txt + '</span>';
+}
+function setKV(id, val){ $(id).textContent = val || '—'; }
+function setProgress(pct){ $('progBar').style.width = pct + '%'; }
+function updateStepLabel(){
+  const el = $('stepLbl');
+  if(el) el.textContent = (LANG==='fr'?'Étape ':'Step ') + currentStep + '/' + TOTAL_STEPS;
+}
+function pushAlert(html, cls){
+  const z = $('alertZone');
+  const first = z.firstElementChild;
+  if(first && first.getAttribute('data-i18n')==='bo.noAlerts') z.innerHTML = '';
+  const d = document.createElement('div');
+  d.className = 'alert ' + (cls||'');
+  d.innerHTML = html;
+  z.insertBefore(d, z.firstChild);
+}
+function setScore(score, temp){
+  $('scoreVal').textContent = score + '/100';
+  const labels = {
+    HOT: LANG==='fr'?'LEAD CHAUD 🔥':'HOT LEAD 🔥',
+    WARM: LANG==='fr'?'TIÈDE 🌤️':'WARM 🌤️',
+    COLD: LANG==='fr'?'FROID ❄️':'COLD ❄️'
+  };
+  $('scoreLbl').textContent = labels[temp] || temp;
+  const colors = { HOT:'#dc2626', WARM:'#f59e0b', COLD:'#0284c7' };
+  $('scoreLbl').style.color = colors[temp] || '#64748b';
+  $('scoreBar').style.width = score + '%';
+}
+
+/* ============================================================
+   LEAD SCORING
+   ============================================================ */
+function computeScore(){
+  let s = 30;
+  if(state.dates === 'soon') s += 25;
+  else if(state.dates === '1_3') s += 15;
+  else if(state.dates === 'later') s += 5;
+  if(state.passengers === '3_plus') s += 15;
+  else if(state.passengers === '2') s += 10;
+  else if(state.passengers === '1') s += 5;
+  if(state.offer === 'business') s += 15;
+  else if(state.offer === 'comfort') s += 10;
+  else if(state.offer === 'eco') s += 5;
+  if(state.visa === 'yes') s += 10;
+  if(state.objection && state.objection !== 'ready') s += 5;
+  s = Math.min(s, 98);
+  state.score = s;
+  state.temp = s >= 80 ? 'HOT' : s >= 60 ? 'WARM' : 'COLD';
+  return s;
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+function resetAll(){
+  abortDemo = true;
+  setTimeout(()=>{ abortDemo = false; }, 100);
+  chat.innerHTML = '';
+  addSys(LANG==='fr'?'🔒 Conversation chiffrée de bout en bout — Prototype de démonstration':'🔒 End-to-end encrypted — Demonstration prototype');
+  chatInput.disabled = true;
+  sendBtn.disabled = true;
+  inputResolver = null;
+  currentStep = 0;
+  updateStepLabel();
+  setProgress(0);
+  $('formPill').textContent = LANG==='fr'?'Étape 1':'Step 1';
+  $('formPill').className = 'pill';
+  submitBtn.disabled = false;
+  ['kvDest','kvDates','kvPax','kvOffer','kvNat','kvVisa','kvCode'].forEach(id=>setKV(id,''));
+  setStatus(LANG==='fr'?'Aucun lead':'No lead');
+  $('leadAv').textContent = '—';
+  $('leadAv').style.background = 'linear-gradient(140deg,var(--sky),var(--sky2))';
+  $('leadName').textContent = t('bo.waitLead');
+  $('leadContact').textContent = t('bo.noData');
+  $('alertZone').innerHTML = '<div class="alert" style="background:#F7F9FC;border-color:var(--line);color:var(--muted)" data-i18n="bo.noAlerts">'+t('bo.noAlerts')+'</div>';
+  $('salesCard').className = 'sales empty';
+  $('salesCard').innerHTML = '<div class="av">?</div><div><b>'+t('bo.noAssign')+'</b><span>'+t('bo.waitPay')+'</span></div>';
+  $('scoreVal').textContent = '—';
+  $('scoreLbl').textContent = t('bo.scoreIdle');
+  $('scoreLbl').style.color = 'var(--muted)';
+  $('scoreBar').style.width = '0%';
+  $('restartFab').classList.remove('show');
+  Object.keys(state).forEach(k=> state[k]=null);
+  state.score = 0;
+}
+$('resetBtn').addEventListener('click', resetAll);
+$('restartFab').addEventListener('click', ()=>{ resetAll(); window.scrollTo({top:0,behavior:'smooth'}); });
+
+/* ============================================================
+   SOURCE DETECTION
+   ============================================================ */
+function detectSource(){
+  const params = new URLSearchParams(window.location.search);
+  const src = params.get('src');
+  return src || 'website';
+}
+const SOURCE = detectSource();
+$('srcLabel').textContent = SOURCE;
+
+/* ============================================================
+   MAIN SCENARIO
+   ============================================================ */
+async function runScenario(lead){
+  state.lead = lead;
+
+  /* ---- STEP 1 : Lead captured ---- */
+  currentStep = 1; updateStepLabel(); setProgress(12);
+  setStatus(LANG==='fr'?'Nouveau lead':'New lead', 'active');
+  $('leadAv').textContent = initials(lead.prenom, lead.nom);
+  $('leadName').textContent = lead.prenom + ' ' + lead.nom;
+  $('leadContact').textContent = lead.email + ' · ' + lead.indic + ' ' + lead.tel;
+  pushAlert('<b>🟢 '+ (LANG==='fr'?'Nouveau lead capturé':'New lead captured') +'</b><br>' + (LANG==='fr'?'Source':'Source') + ' : <b>' + SOURCE + '</b> · ' + nowTime());
+  toast(LANG==='fr'?'🟢 Lead capturé et transmis au bot WhatsApp':'🟢 Lead captured and sent to WhatsApp bot');
+  addSys(LANG==='fr'?'Webhook traité en 0,6 s — ouverture de la conversation WhatsApp':'Webhook processed in 0.6 s — opening WhatsApp chat');
+
+  await new Promise(r=>setTimeout(r, 500));
+  if(abortDemo) return;
+
+  /* ---- STEP 2 : Greeting ---- */
+  const destInfo = DESTINATIONS[lead.destKey];
+  const destLabel = destInfo ? (destInfo.emoji + ' ' + destInfo[LANG]) : lead.destKey;
+  state.destination = destLabel;
+
+  await botSay(
+    (LANG==='fr'
+      ? 'Bonjour <b>'+lead.prenom+'</b> 👋<br><br>Bienvenue chez <b>Bigongdeou Travels</b> ! Je suis votre assistant voyage disponible 24/7.<br><br>Je vois que vous souhaitez partir vers :<br>👉 <b>'+destLabel+'</b>'
+      : 'Hello <b>'+lead.prenom+'</b> 👋<br><br>Welcome to <b>Bigongdeou Travels</b>! I\'m your travel assistant, available 24/7.<br><br>I see you\'d like to travel to:<br>👉 <b>'+destLabel+'</b>'),
+    900
+  );
+  await botSay(LANG==='fr'?'Est-ce bien votre destination ?':'Is this your destination?', 500);
+  const okDest = await askOptions([
+    { label: LANG==='fr'?'✅ Oui, c\'est bien ça':'✅ Yes, that\'s right', value:'yes' },
+    { label: LANG==='fr'?'🔄 Changer de destination':'🔄 Change destination', value:'change' }
+  ]);
+  if(abortDemo) return;
+  if(okDest === 'change' || (typeof okDest==='string' && okDest.indexOf('__text__')===0)){
+    await botSay(LANG==='fr'?'Pas de problème, nous restons sur <b>'+destLabel+'</b> pour cette démonstration 🙂':'No problem, we\'ll stay on <b>'+destLabel+'</b> for this demo 🙂', 700);
+  }
+  setKV('kvDest', destLabel);
+  setProgress(22);
+
+  /* ---- STEP 3 : Travel dates ---- */
+  currentStep = 2; updateStepLabel();
+  await botSay(
+    LANG==='fr'
+      ? 'Parfait 🎯 Pour vous proposer les meilleurs tarifs, j\'ai besoin de quelques informations.<br><br><b>Quand souhaitez-vous voyager ?</b>'
+      : 'Perfect 🎯 To offer you the best fares, I need a few details.<br><br><b>When would you like to travel?</b>',
+    750
+  );
+  const dates = await askOptions([
+    { label: LANG==='fr'?'🚀 Dès que possible (< 15 j)':'🚀 As soon as possible (< 15 d)', value:'soon' },
+    { label: LANG==='fr'?'📅 Dans 1 à 3 mois':'📅 In 1 to 3 months', value:'1_3' },
+    { label: LANG==='fr'?'🕐 Plus tard (3 mois +)':'🕐 Later (3 months +)', value:'later' }
+  ]);
+  if(abortDemo) return;
+  state.dates = dates;
+  const datesLabel = { soon: LANG==='fr'?'< 15 jours':'< 15 days', '1_3': LANG==='fr'?'1 à 3 mois':'1-3 months', later: LANG==='fr'?'> 3 mois':'> 3 months' }[dates];
+  setKV('kvDates', datesLabel);
+  setProgress(32);
+
+  /* ---- STEP 4 : Passengers ---- */
+  currentStep = 3; updateStepLabel();
+  await botSay(
+    LANG==='fr'
+      ? 'Noté ✅ <b>'+datesLabel+'</b><br><br><b>Combien de passagers voyageront avec vous ?</b>'
+      : 'Noted ✅ <b>'+datesLabel+'</b><br><br><b>How many passengers will travel with you?</b>',
+    650
+  );
+  const pax = await askOptions([
+    { label: LANG==='fr'?'👤 1 passager':'👤 1 passenger', value:'1' },
+    { label: LANG==='fr'?'👥 2 passagers':'👥 2 passengers', value:'2' },
+    { label: LANG==='fr'?'👨‍👩‍👧 3 passagers ou +':'👨‍👩‍👧 3 passengers or +', value:'3_plus' }
+  ]);
+  if(abortDemo) return;
+  state.passengers = pax;
+  const paxLabel = { '1':'1', '2':'2', '3_plus': LANG==='fr'?'3+':'3+' }[pax];
+  setKV('kvPax', paxLabel);
+  setProgress(42);
+
+  /* ---- STEP 5 : Offer selection ---- */
+  currentStep = 4; updateStepLabel();
+  await botSay(
+    LANG==='fr'
+      ? 'Excellent 👍 Voici les <b>3 offres disponibles</b> pour <b>'+destLabel+'</b> :<br><br>1️⃣ <b>Éco Standard</b> — 450 000 XOF · bagage 23 kg<br>2️⃣ <b>Confort Flex</b> — 620 000 XOF · modifiable / annulable<br>3️⃣ <b>Business</b> — 1 250 000 XOF · siège VIP + salon<br><br><b>Laquelle vous intéresse ?</b>'
+      : 'Excellent 👍 Here are the <b>3 available offers</b> for <b>'+destLabel+'</b>:<br><br>1️⃣ <b>Eco Standard</b> — 450,000 XOF · 23 kg luggage<br>2️⃣ <b>Comfort Flex</b> — 620,000 XOF · changeable / refundable<br>3️⃣ <b>Business</b> — 1,250,000 XOF · VIP seat + lounge<br><br><b>Which one interests you?</b>',
+    1000
+  );
+  const offer = await askOptions([
+    { label: LANG==='fr'?'1 — Éco Standard':'1 — Eco Standard', value:'eco' },
+    { label: LANG==='fr'?'2 — Confort Flex':'2 — Comfort Flex', value:'comfort' },
+    { label: LANG==='fr'?'3 — Business':'3 — Business', value:'business' }
+  ]);
+  if(abortDemo) return;
+  state.offer = offer;
+  const offerLabels = {
+    eco: LANG==='fr'?'Éco Standard (450 000 XOF)':'Eco Standard (450,000 XOF)',
+    comfort: LANG==='fr'?'Confort Flex (620 000 XOF)':'Comfort Flex (620,000 XOF)',
+    business: LANG==='fr'?'Business (1 250 000 XOF)':'Business (1,250,000 XOF)'
+  };
+  setKV('kvOffer', offerLabels[offer]);
+  setProgress(52);
+
+  /* ---- STEP 6 : Nationality ---- */
+  currentStep = 5; updateStepLabel();
+  await botSay(
+    LANG==='fr'
+      ? 'Parfait, offre <b>'+offerLabels[offer]+'</b> sélectionnée ✈️<br><br><b>Quelle est votre nationalité ?</b> (pour vérifier les exigences de visa)'
+      : 'Perfect, offer <b>'+offerLabels[offer]+'</b> selected ✈️<br><br><b>What is your nationality?</b> (to verify visa requirements)',
+    750
+  );
+  const nat = await askOptions([
+    { label: LANG==='fr'?'🇹🇬 Togolaise':'🇹🇬 Togolese', value:'TG' },
+    { label: LANG==='fr'?'🇨🇮 Ivoirienne':'🇨🇮 Ivorian', value:'CI' },
+    { label: LANG==='fr'?'🇧🇯 Béninoise':'🇧🇯 Beninese', value:'BJ' },
+    { label: LANG==='fr'?'🌍 Autre':'🌍 Other', value:'other' }
+  ]);
+  if(abortDemo) return;
+  state.nationality = nat;
+  const natLabels = { TG: LANG==='fr'?'Togolaise':'Togolese', CI: LANG==='fr'?'Ivoirienne':'Ivorian', BJ: LANG==='fr'?'Béninoise':'Beninese', other: LANG==='fr'?'Autre':'Other' };
+  setKV('kvNat', natLabels[nat]);
+  setProgress(60);
+
+  /* ---- STEP 7 : Visa assistance ---- */
+  currentStep = 6; updateStepLabel();
+  await botSay(
+    LANG==='fr'
+      ? '<b>Souhaitez-vous notre assistance visa</b> (dossier, rendez-vous, traduction) ?'
+      : '<b>Would you like our visa assistance</b> (file, appointments, translation)?',
+    650
+  );
+  const visa = await askOptions([
+    { label: LANG==='fr'?'✅ Oui, je veux l\'assistance':'✅ Yes, I want assistance', value:'yes' },
+    { label: LANG==='fr'?'❌ Non merci':'❌ No thanks', value:'no' }
+  ]);
+  if(abortDemo) return;
+  state.visa = visa;
+  setKV('kvVisa', visa==='yes'?(LANG==='fr'?'Oui':'Yes'):(LANG==='fr'?'Non':'No'));
+  if(visa==='yes'){
+    await botSay(
+      LANG==='fr'
+        ? 'Excellent choix 👌 Notre équipe visa vous accompagne pour <b>+120 destinations</b> avec un taux d\'acceptation de <b>94 %</b>.'
+        : 'Excellent choice 👌 Our visa team supports <b>+120 destinations</b> with a <b>94% approval rate</b>.',
+      700
+    );
+  }
+  setProgress(68);
+
+  /* ---- STEP 8 : Objections ---- */
+  currentStep = 7; updateStepLabel();
+  await botSay(
+    LANG==='fr'
+      ? 'Nous y sommes presque 🙌 Avant de finaliser, <b>avez-vous une hésitation ?</b>'
+      : 'Almost there 🙌 Before finalizing, <b>do you have any hesitation?</b>',
+    700
+  );
+  const objection = await askOptions([
+    { label: LANG==='fr'?'💸 Le prix est trop élevé':'💸 The price is too high', value:'price' },
+    { label: LANG==='fr'?'🤔 Je dois réfléchir':'🤔 I need to think', value:'hesitation' },
+    { label: LANG==='fr'?'⏰ Je ne suis pas pressé':'⏰ I\'m not in a hurry', value:'timing' },
+    { label: LANG==='fr'?'🛂 J\'ai peur du refus de visa':'🛂 I fear visa rejection', value:'visa' },
+    { label: LANG==='fr'?'✅ Aucune, je suis prêt':'✅ None, I\'m ready', value:'ready' }
+  ]);
+  if(abortDemo) return;
+  state.objection = objection;
+
+  const OBJ = {
+    price: LANG==='fr'
+      ? 'Je comprends 💡 Voici ce que nous pouvons faire :<br><br>• <b>Paiement en 3 fois sans frais</b><br>• <b>−8 %</b> si vous payez la totalité aujourd\'hui<br>• Acompte réduit à <b>15 %</b> au lieu de 30 %<br><br>Cela vous aiderait-il à avancer ?'
+      : 'I understand 💡 Here\'s what we can do:<br><br>• <b>3 interest-free instalments</b><br>• <b>−8%</b> if you pay in full today<br>• Deposit reduced to <b>15%</b> instead of 30%<br><br>Would that help you move forward?',
+    hesitation: LANG==='fr'
+      ? 'C\'est tout à fait normal 👍 Je peux <b>bloquer le tarif actuel pendant 48 h</b> sans engagement.<br><br>Vous recevrez un récapitulatif par email et un rappel WhatsApp — vous décidez ensuite.'
+      : 'That\'s completely normal 👍 I can <b>lock the current price for 48 h</b> with no commitment.<br><br>You\'ll get an email recap and a WhatsApp reminder — then you decide.',
+    timing: LANG==='fr'
+      ? 'Pas de souci ⏰ Nous avons justement un service <b>« Alerte Tarif »</b> : nous vous prévenons dès qu\'un vol correspondant à votre profil baisse de plus de <b>10 %</b>.<br><br>Voulez-vous l\'activer ?'
+      : 'No problem ⏰ We actually have a <b>"Fare Alert"</b> service: we notify you as soon as a flight matching your profile drops by more than <b>10%</b>.<br><br>Would you like to activate it?',
+    visa: LANG==='fr'
+      ? 'Je comprends cette crainte 🛂 Voici les faits :<br><br>• <b>94 % d\'acceptation</b> sur les dossiers préparés par notre équipe<br>• <b>Remboursement intégral</b> des frais d\'assistance en cas de refus<br>• Accompagnement du dépôt jusqu\'au passeport tamponné<br><br>Cela vous rassure-t-il ?'
+      : 'I understand that concern 🛂 Here are the facts:<br><br>• <b>94% approval</b> on files prepared by our team<br>• <b>Full refund</b> of assistance fees if refused<br>• Support from submission to stamped passport<br><br>Does that reassure you?'
+  };
+
+  if(objection !== 'ready'){
+    await botSay(OBJ[objection], 1100);
+    await botSay(LANG==='fr'?'Est-ce que cela répond à votre préoccupation ?':'Does this address your concern?', 550);
+    await askOptions([
+      { label: LANG==='fr'?'👍 Oui, merci':'👍 Yes, thanks', value:'ok' },
+      { label: LANG==='fr'?'J\'ai une autre question':'I have another question', value:'again' }
+    ]);
+    if(abortDemo) return;
+    pushAlert('<b>🟡 '+ (LANG==='fr'?'Objection traitée automatiquement':'Objection handled automatically') +'</b><br>' + (LANG==='fr'?'Type':'Type') + ' : <b>' +
+      ({price:LANG==='fr'?'Prix':'Price', hesitation:LANG==='fr'?'Hésitation':'Hesitation', timing:LANG==='fr'?'Timing':'Timing', visa:LANG==='fr'?'Visa':'Visa'}[objection]) +
+      '</b>');
+  }
+
+  /* ---- SCORING ---- */
+  const score = computeScore();
+  setScore(score, state.temp);
+  setStatus(LANG==='fr'?'Lead qualifié':'Lead qualified', 'active');
+  setProgress(78);
+  pushAlert('<b>🔵 '+ (LANG==='fr'?'Qualification complétée':'Qualification completed') +'</b><br>' + (LANG==='fr'?'Score':'Score') + ' : <b>' + score + '/100 (' + state.temp + ')</b>');
+
+  await botSay(
+    (LANG==='fr'
+      ? 'Voici votre <b>évaluation préliminaire</b> :<br><br>📊 <b>Score : ' + score + '/100</b><br>🎯 Profil : <b>' + (state.temp==='HOT'?'CHAUD 🔥':state.temp==='WARM'?'TIÈDE 🌤️':'FROID ❄️') + '</b><br><br>' + (score>=60?'Excellente nouvelle : vous correspondez parfaitement à nos critères ✅':'Votre profil est éligible, nous allons ajuster l\'offre à vos contraintes ✅')
+      : 'Here is your <b>preliminary assessment</b>:<br><br>📊 <b>Score: ' + score + '/100</b><br>🎯 Profile: <b>' + (state.temp==='HOT'?'HOT 🔥':state.temp==='WARM'?'WARM 🌤️':'COLD ❄️') + '</b><br><br>' + (score>=60?'Great news: you match our criteria perfectly ✅':'Your profile is eligible, we\'ll adjust the offer to your constraints ✅')),
+    1100
+  );
+
+  /* ---- PAYMENT ---- */
+  await botSay(
+    (LANG==='fr'
+      ? 'Dernière étape pour <b>réserver votre place</b> :<br><br>💳 <b>Acompte de sécurité : 30 % du billet</b><br>✔️ Entièrement <b>déductible</b> du prix final<br>✔️ Génère votre <b>code de réservation unique</b><br>✔️ Déclenche l\'assignation immédiate d\'un conseiller'
+      : 'Final step to <b>reserve your seat</b>:<br><br>💳 <b>Security deposit: 30% of the ticket</b><br>✔️ Fully <b>deductible</b> from the final price<br>✔️ Generates your <b>unique booking code</b><br>✔️ Triggers immediate assignment of an advisor'),
+    1100
+  );
+  await botSay(LANG==='fr'?'<b>Souhaitez-vous procéder au paiement maintenant ?</b>':'<b>Would you like to proceed with payment now?</b>', 550);
+  const pay = await askOptions([
+    { label: LANG==='fr'?'💳 Payer l\'acompte maintenant':'💳 Pay deposit now', value:'pay', pay:true },
+    { label: LANG==='fr'?'📄 Recevoir le lien par email':'📄 Send the link by email', value:'email' },
+    { label: LANG==='fr'?'⏳ Plus tard':'⏳ Later', value:'later' }
+  ]);
+  if(abortDemo) return;
+
+  if(pay === 'later' || pay === 'email'){
+    await botSay(
+      LANG==='fr'
+        ? 'Pas de souci 👍 Je vous envoie un rappel dans <b>24 h</b>, avec le lien de paiement par email.<br><br>Votre tarif est bloqué pendant <b>48 h</b>.'
+        : 'No problem 👍 I\'ll remind you in <b>24 h</b>, with the payment link by email.<br><br>Your fare is locked for <b>48 h</b>.',
+      900
+    );
+    setStatus(LANG==='fr'?'Paiement en attente':'Payment pending', 'warn');
+    pushAlert('<b>🟠 '+ (LANG==='fr'?'Relance programmée':'Follow-up scheduled') +'</b><br>' + (LANG==='fr'?'Rappel automatique J+1 · tarif bloqué 48 h':'Auto reminder D+1 · fare locked 48 h'));
+    $('restartFab').classList.add('show');
+    return;
+  }
+
+  setStatus(LANG==='fr'?'Paiement en cours…':'Payment processing…', 'warn');
+  await botSay(LANG==='fr'?'🔄 Initialisation de la passerelle de paiement sécurisée…':'🔄 Initialising secure payment gateway…', 700);
+  await new Promise(r=>setTimeout(r, 800));
+  if(abortDemo) return;
+
+  const year = new Date().getFullYear();
+  const rand = Math.random().toString(36).substring(2,6).toUpperCase();
+  const code = 'BIG-' + year + '-' + rand;
+  const txn = 'TXN-' + Math.random().toString().slice(2,10);
+  state.code = code;
+
+  const depositAmounts = { eco:'135 000 XOF', comfort:'186 000 XOF', business:'375 000 XOF' };
+  const deposit = depositAmounts[state.offer];
+
+  await botSay(
+    (LANG==='fr'
+      ? '✅ <b>Acompte confirmé</b><br><br>Montant : <b>' + deposit + '</b><br>Référence : <b>' + txn + '</b><br><br>Votre code de réservation unique :'
+      : '✅ <b>Deposit confirmed</b><br><br>Amount: <b>' + deposit + '</b><br>Reference: <b>' + txn + '</b><br><br>Your unique booking code:') +
+    '<div class="code-box">' + code + '</div>' +
+    '<span style="font-size:11px;color:#6B7A90;display:block;margin-top:6px">' +
+    (LANG==='fr'?'Conservez ce code — requis pour toute correspondance.':'Keep this code — required for any correspondence.') + '</span>',
+    1000
+  );
+
+  setKV('kvCode', code);
+  setProgress(88);
+
+  await new Promise(r=>setTimeout(r, 500));
+
+  pushAlert(
+    '<b>📧 '+ (LANG==='fr'?'Email transactionnel envoyé':'Transactional email sent') +'</b><br>' +
+    (LANG==='fr'?'À':'To') + ' : <b>' + state.lead.email + '</b><br>' +
+    (LANG==='fr'?'Objet':'Subject') + ' : ' + (LANG==='fr'?'Votre réservation ':'Your booking ') + code,
+    'email'
+  );
+  await new Promise(r=>setTimeout(r, 400));
+
+  const rep = nextSalesRep();
+  state.salesRep = rep;
+  pushAlert(
+    '<b>📲 '+ (LANG==='fr'?'WhatsApp interne envoyé':'Internal WhatsApp sent') +'</b><br>' +
+    (LANG==='fr'?'À':'To') + ' : <b>' + rep.nom + '</b> (' + rep.tel + ')<br>' +
+    (LANG==='fr'?'Message':'Message') + ' : ' + (LANG==='fr'?'Nouveau lead chaud — code ':'New hot lead — code ') + code,
+    'wa'
+  );
+  await new Promise(r=>setTimeout(r, 400));
+
+  pushAlert(
+    '<b>📊 '+ (LANG==='fr'?'Fiche CRM créée':'CRM record created') +'</b><br>' +
+    (LANG==='fr'?'ID lead':'Lead ID') + ' : <b>LEAD-' + Date.now().toString().slice(-8) + '</b><br>' +
+    (LANG==='fr'?'Statut':'Status') + ' : <b>' + (LANG==='fr'?'Payé · à rappeler':'Paid · follow up') + '</b>',
+    'crm'
+  );
+
+  $('salesCard').classList.remove('empty');
+  $('salesCard').innerHTML =
+    '<div class="av">' + initials(rep.nom.split(' ')[0], rep.nom.split(' ')[1] || '') + '</div>' +
+    '<div><b>' + rep.nom + '</b><span>' + rep.ville + ' · ' + rep.langues + '</span></div>' +
+    '<span class="tag2">' + (LANG==='fr'?'Assigné':'Assigned') + '</span>';
+
+  setStatus(LANG==='fr'?'Lead converti ✅':'Lead converted ✅', 'hot');
+  $('leadAv').style.background = 'linear-gradient(140deg,#1E7B45,#25D366)';
+  setProgress(100);
+
+  await botSay(
+    (LANG==='fr'
+      ? '🎉 <b>Tout est prêt, ' + state.lead.prenom + ' !</b><br><br>👤 Votre conseiller dédié : <b>' + rep.nom + '</b><br>📍 ' + rep.ville + '<br>🗣️ ' + rep.langues + '<br>📞 ' + rep.tel + '<br><br>Il vient d\'être <b>notifié automatiquement</b> et vous contactera sous <b>2 heures</b>.<br><br>📋 Récapitulatif :<br>• Destination : ' + state.destination + '<br>• Offre : ' + offerLabels[state.offer] + '<br>• Passagers : ' + paxLabel + '<br>• Code : <b>' + code + '</b><br><br>Merci de votre confiance 🙏 Bon voyage avec <b>Bigongdeou Travels</b> !'
+      : '🎉 <b>Everything is ready, ' + state.lead.prenom + '!</b><br><br>👤 Your dedicated advisor: <b>' + rep.nom + '</b><br>📍 ' + rep.ville + '<br>🗣️ ' + rep.langues + '<br>📞 ' + rep.tel + '<br><br>They were <b>automatically notified</b> and will contact you within <b>2 hours</b>.<br><br>📋 Summary:<br>• Destination: ' + state.destination + '<br>• Offer: ' + offerLabels[state.offer] + '<br>• Passengers: ' + paxLabel + '<br>• Code: <b>' + code + '</b><br><br>Thank you for your trust 🙏 Enjoy your trip with <b>Bigongdeou Travels</b>!'),
+    1200
+  );
+
+  await botSay(LANG==='fr'?'Une dernière chose — puis-je vous aider avec autre chose ?':'One last thing — can I help with anything else?', 550);
+  await askOptions([
+    { label: LANG==='fr'?'📋 Politique bagages':'📋 Luggage policy', value:'faq1' },
+    { label: LANG==='fr'?'🛂 Documents requis':'🛂 Required documents', value:'faq2' },
+    { label: LANG==='fr'?'🔄 Modifier ma réservation':'🔄 Modify my booking', value:'faq3' },
+    { label: LANG==='fr'?'✅ Non, tout est parfait':'✅ No, all good', value:'done' }
+  ]);
+  if(abortDemo) return;
+
+  await botSay(
+    LANG==='fr'
+      ? '🙏 Merci ! Un SMS et un email de confirmation viennent de vous être envoyés. Vous pouvez à tout moment répondre <b>« MENU »</b> à ce numéro pour revenir aux options.<br><br>Excellent voyage ✈️'
+      : '🙏 Thanks! An SMS and confirmation email have just been sent to you. You can reply <b>"MENU"</b> to this number at any time to return to options.<br><br>Have a great trip ✈️',
+    900
+  );
+
+  addSys(LANG==='fr'?'✅ Parcours automatisé terminé — 0 intervention humaine':'✅ Automated journey complete — 0 human intervention');
+  toast(LANG==='fr'?'🎉 Parcours complet — lead converti et commercial assigné':'🎉 Full journey — lead converted and sales rep assigned');
+  submitBtn.disabled = false;
+  $('formPill').textContent = LANG==='fr'?'Terminé':'Done';
+  $('formPill').className = 'pill on';
+  $('restartFab').classList.add('show');
+}
+
+/* ============================================================
+   FORM SUBMIT — version robuste avec splash WhatsApp
+   ============================================================ */
+leadForm.addEventListener('submit', async function(e){
+  e.preventDefault();
+  if(demoRunning) return;
+  demoRunning = true;
+
+  // 1. Désactiver le bouton + afficher un spinner
+  submitBtn.disabled = true;
+  const originalLabel = submitBtn.innerHTML;
+  submitBtn.innerHTML = '<span class="spinner"></span> ' + (LANG==='fr'?'Connexion…':'Connecting…');
+
+  try {
+    // 2. Récupérer le lead
+    const lead = {
+      prenom: $('f_prenom').value.trim() || 'Prospect',
+      nom: $('f_nom').value.trim() || '',
+      email: $('f_email').value.trim(),
+      indic: $('f_indic').value,
+      tel: $('f_tel').value.trim(),
+      destKey: $('f_dest').value
+    };
+
+    // 3. Réinitialiser l'interface
+    resetAll();
+    demoRunning = true;
+    chatInput.disabled = false;
+    sendBtn.disabled = false;
+    submitBtn.disabled = true;
+
+    // 4. Afficher le splash WhatsApp
+    $('waSplashTitle').textContent = LANG==='fr'?'Ouverture de WhatsApp…':'Opening WhatsApp…';
+    $('waSplashSub').textContent = (LANG==='fr'?'Connexion au numéro ':'Connecting to ') + lead.indic + ' ' + lead.tel;
+    $('waSplash').classList.add('show');
+
+    // 5. Laisser le splash 1,4 s puis démarrer
+    await new Promise(r => setTimeout(r, 1400));
+    $('waSplash').classList.remove('show');
+
+    // 6. Message système visible
+    addSys((LANG==='fr'?'📲 Conversation WhatsApp ouverte avec ':'📲 WhatsApp conversation opened with ') + lead.indic + ' ' + lead.tel);
+    await new Promise(r => setTimeout(r, 300));
+
+    // 7. Lancer le scénario
+    await runScenario(lead);
+
+  } catch(err){
+    console.error('[GGC Demo]', err);
+    hideTyping();
+    addSys('⚠️ ' + (LANG==='fr'?'Erreur : ':'Error: ') + (err && err.message ? err.message : 'inconnue'));
+    toast(LANG==='fr'?'Une erreur est survenue. Rechargez la page.':'An error occurred. Please reload.');
+  } finally {
+    submitBtn.innerHTML = originalLabel;
+    submitBtn.disabled = false;
+    demoRunning = false;
+    $('waSplash').classList.remove('show');
+  }
+});
+
+/* ============================================================
+   AUTO-PLAY
+   ============================================================ */
+$('autoBtn').addEventListener('click', function(){
+  $('demo').scrollIntoView({behavior:'smooth'});
+  setTimeout(function(){
+    if(!$('f_prenom').value) $('f_prenom').value='Amine';
+    if(!$('f_nom').value) $('f_nom').value='Kouassi';
+    if(!$('f_email').value) $('f_email').value='amine.kouassi@example.com';
+    if(!$('f_tel').value) $('f_tel').value='90123456';
+    leadForm.dispatchEvent(new Event('submit',{cancelable:true,bubbles:true}));
+  }, 400);
+});
+
+/* ============================================================
+   INIT
+   ============================================================ */
+setLang('fr');
+resetAll();
+updateStepLabel();
+
+})();
+</script>
+</body>
+</html>
